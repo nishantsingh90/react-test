@@ -26,15 +26,31 @@ export default function Question() {
 
   const handleSubmit=()=>{
     console.log(Formdata)
-    axios.post(`https://nishantsingh910.pythonanywhere.com/add-question`, { "headers": {
+//     axios.post(`https://nishantsingh910.pythonanywhere.com/add-question`, { "headers": {
 
-      "content-type": "application/json",
+//       "content-type": "application/json",
       
-      },Formdata })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
+//       },Formdata })
+//       .then(res => {
+//         console.log(res);
+//         console.log(res.data);
+//       })
+    
+    fetch('https://nishantsingh910.pythonanywhere.com/add-question/', {
+      method: 'POST',
+      
+      mode: 'cors',
+      
+      
+      body:JSON.stringify(Formdata),
       })
+      .then((response) =>  {
+          console.log('Posted successfully')
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  
   
 
 }
